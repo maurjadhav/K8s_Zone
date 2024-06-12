@@ -1,6 +1,7 @@
 #!/bin/bash
 curl -fsSL https://get.docker.com -o /tmp/install-docker.sh
 sh /tmp/install-docker.sh
+sudo usermod -aG docker ubuntu
 sudo apt-get update
 # apt-transport-https may be a dummy package; if so, you can skip that package
 sudo apt-get install -y apt-transport-https ca-certificates curl gpg

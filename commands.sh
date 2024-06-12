@@ -2,6 +2,7 @@
 
 curl -fsSL https://get.docker.com -o /tmp/install-docker.sh
 sh /tmp/install-docker.sh
+sudo usermod -aG docker ubuntu
 sudo apt-get update
 # apt-transport-https may be a dummy package; if so, you can skip that package
 sudo apt-get install -y apt-transport-https ca-certificates curl gpg
@@ -15,8 +16,7 @@ sudo dpkg -i cri-dockerd_0.3.14.3-0.ubuntu-jammy_amd64.deb
 
 
 
-# after this become a sudo user and add cri (on Linux Machine)
-
+# after this become a sudo user and add CRI (on Linux Machine Master node) any one of the following
 # for cri-dockerd
 kubeadm init --cri-socket unix:///var/run/cri-dockerd.sock
 
@@ -26,5 +26,11 @@ kubeadm init --cri-socket unix:///var/run/crio/crio.sock
 # for containerd
 kubeadm init --cri-socket unix:///var/run/containerd/containerd.sock
 
+# install CNI plugin on the Master node to communicate with the nodes
+kubectl apply -f https://reweave.azurewebsites.net/k8s/v1.29/net.yaml
 
-# after init make one machine as a master and other as a node by performing suggested commands
+
+# after CRI and CNI installation add other node by performing suggested commands
+
+# you can join any number of worker nodes by running the suggested command(root user)
+# while executing join add the cri socket(--cri-socket) which is used in the master

@@ -11,6 +11,7 @@ terraform apply -var "instance_count=3" -auto-approve
 ```
 * Now wait till the execution is completed and look into outputs. Wait fr 2-3 minutes
 * Now ssh into instance and start using docker-k8s
+* If you change the region then change the `ami id` and `instance type` according to the region
 
 * Once your are done practicing destroy the instance
 ```
