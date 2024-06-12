@@ -1,6 +1,6 @@
 # output ssh command
 output "ssh_command" {
-  value = "ssh ubuntu@${aws_instance.k8s.public_ip}"
+  value =  [for instance in aws_instance.k8s : "ssh ubuntu@${instance.public_ip}" ]
 }
 
 output "message" {

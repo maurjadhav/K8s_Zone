@@ -58,11 +58,7 @@ resource "aws_instance" "k8s" {
   count                       = var.instance_count
 
   root_block_device {
-    volume_size = 12
+    volume_size = 15
     volume_type = "gp3"
-  }
-
-  tags = {
-    Name = "docker-machine"
   }
 }
