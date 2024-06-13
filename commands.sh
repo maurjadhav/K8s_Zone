@@ -34,3 +34,8 @@ kubectl apply -f https://reweave.azurewebsites.net/k8s/v1.29/net.yaml
 
 # you can join any number of worker nodes by running the suggested command(root user)
 # while executing join add the cri socket(--cri-socket) which is used in the master
+
+# set the autocompletion on master node
+source <(kubectl completion bash)
+# permentaly added
+echo "source <(kubectl completion bash)" >> ~/.bashrc
