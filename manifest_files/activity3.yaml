@@ -5,7 +5,7 @@ metadata:
   name: mysql
   labels:
     app: mysql-database
-    engine: mysql:8.0-debian
+    engine: mysql
 spec:
   containers:
     - name: mysql
